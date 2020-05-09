@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<head>
+    <title>Tic-Cat-Dog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <script src="js/4x4.js"></script>
+    <link rel="stylesheet" href="dist/css/reset.css">
+    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=McLaren&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body onload="newboard();" background="images/background.png" style="background-repeat: no-repeat; background-size: cover">
+    <div class="navbar-container">
+        <a id="button-audio" onclick="audioFunction()" class=" nav-button">
+            <p id="icon-music" class="icon-2" style="color: #F08732;"><i class="fa fa-music"></i></p>
+        </a>
+        <a id="button" class="nav-button">
+            <p class="icon"><i class="fa fa-question"></i></p>
+        </a>
+        <a href="./index.html" class="nav-button">
+            <p class="icon"><i class="fa fa-home"></i></p>
+        </a>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1 class="subtitle">Cara Bermain</h1>
+            <hr class="line">
+            <div class="how-to-content">
+                <p><span class="bold">1. Pilih papannya.</span> Pertama, Anda harus milih papan permainannya, yang
+                    terdiri dari petak-petak persegi 3 x 3, 4 x 4, atau 5 x 5. Pada Cara Bermain di sini, kita akan
+                    fokus pada petak 3 x 3.</p>
+                <p><span class="bold">2. Biarkan pemain pertama bermain terlebih dulu.</span> Meskipun tradisionalnya,
+                    pemain pertama bermain dengan “X”, Anda dapat mengizinkan pemain pertama menentukan apakah dia ingin
+                    memainkan “X” atau “O”. Simbol-simbol ini akan digambar pada tabel, dalam usaha untuk menggambar
+                    tiga simbol yang sama dalam satu deret. Jika Anda menjadi pemain pertama, “langkah terbaik yang
+                    dapat Anda lakukan adalah menggambar simbol Anda di kotak tengah.” Ini akan memaksimalkan peluang
+                    Anda untuk menang, karena Anda akan dapat membuat sederet tiga “X” atau “O” dalam lebih banyak
+                    kombinasi (4) dengan cara ini daripada jika Anda memilih kotak yang berbeda.</p>
+                <p><span class="bold">3. Selanjutnya, giliran pemain kedua bermain.</span> Setelah pemain pertama
+                    menggambar simbol, pemain kedua harus menggambar simbolnya, yang akan berbeda dari simbol yang
+                    digunakan oleh pemain pertama. Pemain kedua dapat berusaha memblokir pemain pertama membuat tiga
+                    simbol dalam satu deret, atau fokus pada pembuatan tiga simbol dalam satu deretnya sendiri.
+                    Idealnya, seorang pemain dapat melakukan keduanya secara bersamaan.</p>
+                <p><span class="bold">4. Teruslah bergiliran menggambar simbol masing-masing sampai salah satu pemain
+                        telah menggambar tiga simbol dalam satu deret atau sampai tidak ada pemain yang dapat
+                        menang.</span> Pemain yang pertama kali menggambar tiga simbolnya dalam satu deret, entah secara
+                    horizontal, vertikal, ataupun diagonal, menjadi pemenang permainan. Namun, jika kedua pemain
+                    menggunakan strategi optimal, kemungkinan besar tidak akan ada pemenang karena kalian akan saling
+                    memblokir kesempatan masing-masing untuk membuat tiga simbol dalam satu deret.</p>
+                <p><span class="bold">5. Teruslah berlatih. Berlawanan dengan kepercayaan umum, tic-tac-toe bukanlah
+                        sepenuhnya permainan peluang.</span> Ada beberapa strategi yang dapat membantu Anda
+                    mengoptimalkan kemampuan Anda dan membuat Anda menjadi pemain tic-tac-toe yang ahli. Jika Anda terus
+                    bermain, Anda akan segera mempelajari semua trik untuk memastikan Anda memenangkan setiap permainan
+                    — atau, setidaknya, Anda akan mempelajari trik-trik untuk memastikan Anda tidak pernah kalah.</p>
+            </div>
+        </div>
+    </div>
+    <div class="content-container">
+        <h1 class="title-2">Tic-Cat-Dog</h1>
+        <div class="board-container">
+            <div class="board-size">
+                <div class="size">
+                    <button id="size3" onclick="function3()" class="button-size">3x3</button>
+                    <button id="size4" onclick="function4()" class="button-size">4x4</button>
+                    <button id="size5" onclick="function5()" class="button-size">5x5</button>
+                </div>
+            </div>
+            <div class="board-content">
+                <div class="row-board">
+                    <img class="tile" src="images/blank.png" onclick="makeMove(0)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(1)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(2)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(3)" />
+                </div>
+                <div class="row-board">
+                    <img class="tile" src="images/blank.png" onclick="makeMove(4)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(5)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(6)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(7)" />
+                </div>
+                <div class="row-board">
+                    <img class="tile" src="images/blank.png" onclick="makeMove(8)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(9)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(10)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(11)" />
+                </div>
+                <div class="row-board">
+                    <img class="tile" src="images/blank.png" onclick="makeMove(12)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(13)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(14)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(15)" />
+                </div>
+                <input class="new-game" type="button" value="Permainan Baru" onclick="newboard()" />
+            </div>
+            <div class="info-game">
+                <p id="turnInfo"> TURN INFO </p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <audio id="myAudio" allow='autoplay' loop='loop' loop autoplay>
+        <source src="music/canals.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</body>
+<script>
+    var modal = document.getElementById("modal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("button");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function () {
+        modal.style.display = "flex";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    var x = document.getElementById("myAudio");
+    var checkAudio = false;
+    var property = document.getElementById("icon-music");
+    function audioFunction() {
+        if (checkAudio === true) {
+            property.style.color = "#F08732";
+            x.play();
+            checkAudio = false;
+        } else if (checkAudio === false) {
+            property.style.color = "#FFFFFF";
+            x.pause();
+            checkAudio = true;
+        }
+    }
+    function function3() {
+        let params = (new URL(document.location)).searchParams;
+        let name = params.get('name');
+        let level = params.get('level')
+        if (level === "easy"){
+            if (name === "anjing") {
+                window.location.href = '3x3.html?name=anjing&level=easy';
+            }else if (name === "kucing") {
+                window.location.href = '3x3.html?name=kucing&level=easy';
+            }
+        }else {
+            if (name === "anjing") {
+                window.location.href = '3x3.html?name=anjing';
+            }else if (name === "kucing") {
+                window.location.href = '3x3.html?name=kucing';
+            }
+        }  
+    }
+    function function4() {
+        let params = (new URL(document.location)).searchParams;
+        let name = params.get('name');
+        let level = params.get('level')
+        if (level === "easy"){
+            if (name === "anjing") {
+                window.location.href = '4x4.html?name=anjing&level=easy';
+            }else if (name === "kucing") {
+                window.location.href = '4x4.html?name=kucing&level=easy';
+            }
+        }else {
+            if (name === "anjing") {
+                window.location.href = '4x4.html?name=anjing';
+            }else if (name === "kucing") {
+                window.location.href = '4x4.html?name=kucing';
+            }
+        }  
+    }
+    function function5() {
+        let params = (new URL(document.location)).searchParams;
+        let name = params.get('name');
+        let level = params.get('level');
+        if (level === "easy"){
+            if (name === "anjing") {
+                window.location.href = '5x5.html?name=anjing&level=easy';
+            }else if (name === "kucing") {
+                window.location.href = '5x5.html?name=kucing&level=easy';
+            }
+        }else {
+            if (name === "anjing") {
+                window.location.href = '5x5.html?name=anjing';
+            }else if (name === "kucing") {
+                window.location.href = '5x5.html?name=kucing';
+            }
+        }  
+    }
+</script>
+
+</html>

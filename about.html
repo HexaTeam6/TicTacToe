@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+	<title>Tentang Tic-Tac-Mas</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="dist/css/reset.css">
+	<link rel="stylesheet" href="dist/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=McLaren&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="navbar-container">
+		<a id="button-audio" onclick="audioFunction()" class=" nav-button">
+			<p id="icon-music" class="icon-2"><i class="fa fa-music"></i></p>
+		</a>
+		<a href="./index.html" class="nav-button">
+			<p class="icon"><i class="fa fa-home"></i></p>
+		</a>
+	</div>
+	<div class="navbar-container-2">
+			<p class="nav-button icon-2" onclick="history.back();"><i class="fa fa-arrow-left" aria-hidden="true"></i></p> 
+	</div>
+
+	<div class="content-container">
+		<img class="pohon-1" src="dist/assets/pohon-1.png" />
+		<img class="pohon-2" src="dist/assets/pohon-2.png" />
+		<div class="content-container-2">
+			<div class="white-container-2">
+				<h1 class="subtitle">Tentang Tic-Tac-Mas</h1>
+				<hr class="line">
+				<div class="row-2">
+					<div class="left-2">
+						<img class="character" src="dist/assets/timun_mas.png" />
+						<img class="character" src="dist/assets/raksasa.png" />
+					</div>
+					<div class="right-2">
+						<p>Tic-Tac-Mas (<i>Tic-Tac-Toe</i> Timun Mas) merupakan permainan yang dikembangkan oleh <a
+								href="https://www.linkedin.com/in/darinamanda/">Darin Amanda Zakiya</a>, <a
+								href="https://www.linkedin.com/in/nataprawiraf/">Muhammad Fachry Nataprawira</a>, <a
+								href="https://www.linkedin.com/in/nadhirsyah-indra/">Muhammad Nadhirsyah Indra</a>, dan
+							<a href="https://www.linkedin.com/in/roshani-ayu-pranasti/">Roshani Ayu Pranasti</a>
+							sebagai proyek akhir mata kuliah Sistem Cerdas, Fakultas Ilmu Komputer, Universitas
+							Indonesia, Semester Gasal 2019/2020.</p>
+						<p>Permainan ini merupakan permainan <i>Tic-Tac-Toe</i> yang terinspirasi dari cerita rakyat
+							Jawa Tengah yang berjudul Timun Mas.
+							Timun Mas sendiri menceritakan kisah seorang gadis yang mencoba untuk bertahan dan melarikan
+							diri dari raksasa hijau jahat yang mencoba untuk menangkap dan memakannya.
+							Klik tombol di bawah untuk membaca cerita lengkap Timun Mas!</p>
+						<button onclick="window.location.href='story.html'" class="button-story">Baca Cerita Timun
+							Mas</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<img class="semak-1" src="dist/assets/semak-1.png" />
+		<img class="semak-2" src="dist/assets/semak-2.png" />
+	</div>
+	<p class=footer-text>&copy; Copyright 2019. All rights reserved.
+        <br>Darin Amanda - M. Fachry - M. Nadhirsyah - Roshani Ayu</p>
+    </p>
+	<audio id="myAudio" allow='autoplay' loop='loop' loop>
+		<source src="music/cublak.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+</body>
+<script>
+	var x = document.getElementById("myAudio");
+    var checkAudio = true;
+    var property = document.getElementById("icon-music");
+    function audioFunction() {
+        if (checkAudio === true) {
+            property.style.color = "#F08732";
+            x.play();
+            checkAudio = false;
+        } else if (checkAudio === false) {
+            property.style.color = "#FFFFFF";
+            x.pause();
+            checkAudio = true;
+        }
+    }
+</script>
+</html>

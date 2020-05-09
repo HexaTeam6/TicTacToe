@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <head>
     <title>Tic-Cat-Dog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <script src="js/3x3.js"></script>
+    <link rel="stylesheet" href="dist/css/reset.css">
     <link rel="stylesheet" href="dist/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -9,16 +11,18 @@
     <link href="https://fonts.googleapis.com/css?family=McLaren&display=swap" rel="stylesheet">
 </head>
 
-<body background="images/background.png" style="background-repeat: no-repeat; background-size: cover">
+<body onload="newboard();" background="images/background.png" style="background-repeat: no-repeat; background-size: cover">
     <div class="navbar-container">
-        <a id="button-audio" onclick="audioFunction()" class="nav-button">
+        <a id="button-audio" onclick="audioFunction()" class=" nav-button">
             <p id="icon-music" class="icon-2" style="color: #F08732;"><i class="fa fa-music"></i></p>
         </a>
         <a id="button" class="nav-button">
             <p class="icon"><i class="fa fa-question"></i></p>
         </a>
+        <a href="./index.html" class="nav-button">
+            <p class="icon"><i class="fa fa-home"></i></p>
+        </a>
     </div>
-
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -49,60 +53,50 @@
                 <p><span class="bold">5. Teruslah berlatih. Berlawanan dengan kepercayaan umum, tic-tac-toe bukanlah
                         sepenuhnya permainan peluang.</span> Ada beberapa strategi yang dapat membantu Anda
                     mengoptimalkan kemampuan Anda dan membuat Anda menjadi pemain tic-tac-toe yang ahli. Jika Anda terus
-                    bermain, Anda akan segera mempelajari semua trik untuk memastikan Anda memenangkan setiap permainan - atau, setidaknya, Anda akan mempelajari trik-trik untuk memastikan Anda tidak pernah kalah.</p>
+                    bermain, Anda akan segera mempelajari semua trik untuk memastikan Anda memenangkan setiap permainan
+                    — atau, setidaknya, Anda akan mempelajari trik-trik untuk memastikan Anda tidak pernah kalah.</p>
             </div>
         </div>
     </div>
-
     <div class="content-container">
-        <div class="white-container">
-            <h1 class="title" style="color: #FFB13F">Tic-Cat-Dog</h1>
-            <div class="row">
-                <div class="left">
-                    <p>Pemain Pertama:</p>
-                </div>
-                <div class="right">
-                    <select class="selection" id="player">
-                        <option value="kucing">Kucing</option>
-                        <option value="anjing">Anjing</option>
-                    </select>
+        <h1 class="title-2">Tic-Cat-Dog</h1>
+        <div class="board-container">
+            <div class="board-size">
+                <div class="size">
+                    <button id="size3" onclick="function3()" class="button-size">3x3</button>
+                    <button id="size4" onclick="function4()" class="button-size">4x4</button>
+                    <button id="size5" onclick="function5()" class="button-size">5x5</button>
                 </div>
             </div>
-            <div class="row">
-                <div class="left">
-                    <p>Ukuran Board:</p>
+            <div class="board-content">
+                <div class="row-board">
+                    <img class="tile" src="images/blank.png" onclick="makeMove(0)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(1)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(2)" />
                 </div>
-                <div class="right">
-                    <select class="selection" id="size">
-                        <option value="3">3 x 3</option>
-                        <option value="4">4 x 4</option>
-                        <option value="5">5 x 5</option>
-                    </select>
+                <div class="row-board">
+                    <img class="tile" src="images/blank.png" onclick="makeMove(3)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(4)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(5)" />
                 </div>
+                <div class="row-board">
+                    <img class="tile" src="images/blank.png" onclick="makeMove(6)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(7)" />
+                    <img class="tile" src="images/blank.png" onclick="makeMove(8)" />
+                </div>
+                <input class="new-game" type="button" value="Permainan Baru" onclick="newboard()" />
             </div>
-            <div class="row">
-                <div class="left">
-                    <p>Tingkat Kesulitan:</p>
-                </div>
-                <div class="right">
-                    <select class="selection" id="level">
-                        <option value="easy">Mudah</option>
-                        <option value="hard">Sulit</option>
-                    </select>
-                </div>
+            <div class="info-game">
+                <p id="turnInfo"> TURN INFO </p>
             </div>
-            <button class="start" onclick="startFunction()">Mulai Permainan!</button>
         </div>
-
-	</div>
-	<audio id="myAudio" allow='autoplay' loop='loop' loop autoplay>
-		<source src="music/canals.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-	</audio>
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    </div>
+    <audio id="myAudio" allow='autoplay' loop='loop' loop autoplay>
+        <source src="music/canals.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 </body>
 <script>
-    // Get the modal
     var modal = document.getElementById("modal");
 
     // Get the button that opens the modal
@@ -127,7 +121,6 @@
             modal.style.display = "none";
         }
     }
-
     var x = document.getElementById("myAudio");
     var checkAudio = false;
     var property = document.getElementById("icon-music");
@@ -142,51 +135,60 @@
             checkAudio = true;
         }
     }
-
-    function startFunction() {
-        var player = document.getElementById("player").value;
-        var size = document.getElementById("size").value;
-        var level = document.getElementById("level").value;
-        if (level == "easy") {
-            if (player == "kucing") {
-                if (size == 3) {
-                    window.location.href = '3x3.html?name=kucing&level=easy';
-                } else if (size == 4) {
-                    window.location.href = '4x4.html?name=kucing&level=easy';
-                } else if (size == 5) {
-                    window.location.href = '5x5.html?name=kucing&level=easy';
-                }
+    function function3() {
+        let params = (new URL(document.location)).searchParams;
+        let name = params.get('name');
+        let level = params.get('level')
+        if (level === "easy"){
+            if (name === "anjing") {
+                window.location.href = '3x3.html?name=anjing&level=easy';
+            }else if (name === "kucing") {
+                window.location.href = '3x3.html?name=kucing&level=easy';
             }
-            else if (player == "anjing") {
-                if (size == 3) {
-                    window.location.href = '3x3.html?name=anjing&level=easy';
-                } else if (size == 4) {
-                    window.location.href = '4x4.html?name=anjing&level=easy';
-                } else if (size == 5) {
-                    window.location.href = '5x5.html?name=anjing&level=easy';
-                }
+        }else {
+            if (name === "anjing") {
+                window.location.href = '3x3.html?name=anjing';
+            }else if (name === "kucing") {
+                window.location.href = '3x3.html?name=kucing';
             }
-        }
-        else if (level == "hard") {
-            if (player == "kucing") {
-                if (size == 3) {
-                    window.location.href = '3x3.html?name=kucing';
-                } else if (size == 4) {
-                    window.location.href = '4x4.html?name=kucing';
-                } else if (size == 5) {
-                    window.location.href = '5x5.html?name=kucing';
-                }
+        }  
+    }
+    function function4() {
+        let params = (new URL(document.location)).searchParams;
+        let name = params.get('name');
+        let level = params.get('level')
+        if (level === "easy"){
+            if (name === "anjing") {
+                window.location.href = '4x4.html?name=anjing&level=easy';
+            }else if (name === "kucing") {
+                window.location.href = '4x4.html?name=kucing&level=easy';
             }
-            else if (player == "anjing") {
-                if (size == 3) {
-                    window.location.href = '3x3.html?name=anjing';
-                } else if (size == 4) {
-                    window.location.href = '4x4.html?name=anjing';
-                } else if (size == 5) {
-                    window.location.href = '5x5.html?name=anjing';
-                }
+        }else {
+            if (name === "anjing") {
+                window.location.href = '4x4.html?name=anjing';
+            }else if (name === "kucing") {
+                window.location.href = '4x4.html?name=kucing';
             }
-        }
+        }  
+    }
+    function function5() {
+        let params = (new URL(document.location)).searchParams;
+        let name = params.get('name');
+        let level = params.get('level');
+        if (level === "easy"){
+            if (name === "anjing") {
+                window.location.href = '5x5.html?name=anjing&level=easy';
+            }else if (name === "kucing") {
+                window.location.href = '5x5.html?name=kucing&level=easy';
+            }
+        }else if (level === "hard"){
+            if (name === "anjing") {
+                window.location.href = '5x5.html?name=anjing';
+            }else {
+                window.location.href = '5x5.html?name=kucing';
+            }
+        }  
     }
 </script>
+
 </html>
