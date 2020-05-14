@@ -72,7 +72,7 @@ function newboard() {
     if (name === "anjing") {
         active_turn = "ANJING";
         turnInfo.innerHTML = "Anjing sebagai pemain pertama yang jalan";
-        setTimeout(moveButoIjo, 500);
+        setTimeout(moveAnjing, 500);
     } else if (name === "kucing") {
         active_turn = "KUCING";
         turnInfo.innerHTML = 'Kucing sebagai pemain pertama yang jalan, monggo..';
@@ -97,12 +97,12 @@ function makeMove(pieceMove) {
             var alert = document.getElementById("turnInfo");
             active_turn = "ANJING";
             alert.innerHTML = "Giliran Anjing mengejar"
-            setTimeout(moveButoIjo, 500);
+            setTimeout(moveAnjing, 500);
         }
     }
 }
 
-function moveButoIjo() {
+function moveAnjing() {
     minimax(board, 0, -Infinity, +Infinity);
     var move = choice;
     board[move] = ANJING;
